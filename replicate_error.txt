@@ -1,6 +1,18 @@
+deactivate
+rm -rf .venv
 pixi run -e cuda python -m venv .venv
 # create venv
 source .venv/bin/activate
 pip install --pre torch==2.6.0.dev20241228 numpy --index-url https://download.pytorch.org/whl/nightly/cu118
 # run script
-TORCHINDUCTOR_FORCE_DISABLE_CACHES=1 python examples/nested_fail.py --do_warmup
+TORCHINDUCTOR_FORCE_DISABLE_CACHES=1 python examples/nested_fail.py --skip_first_block_mask
+
+deactivate
+rm -rf .venv
+pixi run -e cuda python -m venv .venv
+# create venv
+source .venv/bin/activate
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+pip install numpy
+# run script
+TORCHINDUCTOR_FORCE_DISABLE_CACHES=1 python examples/nested_fail.py --skip_first_block_mask
