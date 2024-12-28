@@ -1,0 +1,6 @@
+pixi run -e cuda python -m venv .venv
+# create venv
+source .venv/bin/activate
+pip install --pre torch==2.6.0.dev20241228 numpy matplotlib --index-url https://download.pytorch.org/whl/nightly/cu118
+# run script
+TORCHINDUCTOR_FORCE_DISABLE_CACHES=1 PYTHONPATH=./ python examples/nested_bias_grad_fail.py --do_warmup
