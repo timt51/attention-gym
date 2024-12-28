@@ -20,7 +20,7 @@ def main():
     args = parser.parse_args()
 
     # define problem size
-    B, H, S, D = 1, 1, 1478, 64
+    B, H, D = 1, 1, 64
     for i, S in enumerate([712, 1478]):
         # create block mask
         block_mask = create_block_mask(mask_mod=mask_mod, B=1, H=1, Q_LEN=S, KV_LEN=S)
